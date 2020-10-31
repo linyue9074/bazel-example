@@ -16,11 +16,12 @@ load("@rules_jvm_external//:defs.bzl", "maven_install")
 maven_install(
     artifacts = [
         "org.apache.commons:commons-lang3:3.11",
-        "com.google.errorprone:error_prone_annotations:2.3.3",
+        "com.google.errorprone:error_prone_annotation:2.4.0",
         "com.google.errorprone:error_prone_core:2.3.3",
-        "com.google.auto.service:auto-service:1.0-rc6",
+        "com.google.auto.service:auto-service-annotations:1.0-rc7",
         "com.google.auto:auto-common:0.11",
-        "com.google.guava:guava:19.0"
+        "com.google.guava:guava:19.0",
+        "com.google.errorprone:error_prone_check_api:2.4.0"
     ],
     repositories = [
         "https://repo1.maven.org/maven2",

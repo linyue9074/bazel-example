@@ -1,15 +1,15 @@
 java_plugin(
-    name = "MyCustomCheckPlugin",
-    srcs = ["MyCustomCheck.java"],
+    name = "MyCustomCheck",
+    srcs = glob(["src/main/java/com/yuelin/MyCustomCheck.java"]),
     deps = [
-        "@error_prone//jar",
-        "@guava//jar",
-        "//third_party/java/auto_service",
+        "@maven//:com_google_errorprone_error_prone_core",
+        "@maven//:com_google_guava_guava",
+        "@maven//:com_google_auto_auto_common"
     ],
 )
 
 java_library (
     name = "greeter",
-    srcs = glob(["src/main/java/com/baeldung/*.java"]),
+    srcs = glob(["src/main/java/com/yuelin/*.java"]),
     visibility = ["//bazelapp:__pkg__"]
 )

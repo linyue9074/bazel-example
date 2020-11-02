@@ -19,7 +19,9 @@ package com.yuelin;
 import static com.google.common.collect.Iterables.getLast;
 import static com.google.errorprone.BugPattern.LinkType.CUSTOM;
 import static com.google.errorprone.BugPattern.SeverityLevel.ERROR;
+import static com.google.errorprone.BugPattern.SeverityLevel.WARNING;
 import static com.google.errorprone.matchers.Description.NO_MATCH;
+import static com.google.errorprone.matchers.Matchers.hasAnnotation;
 import static com.google.errorprone.matchers.Matchers.instanceMethod;
 import static com.google.errorprone.matchers.method.MethodMatchers.staticMethod;
 
@@ -49,9 +51,9 @@ import java.util.Objects;
 @BugPattern(
         name = "MyCustomCheck",
         summary = "String formatting inside print method",
-        severity = ERROR,
+        severity = WARNING,
         linkType = CUSTOM,
-        link = "example.com/bugpattern/MyCustomCheck")
+        link = "yuelin.com/bugpattern/MyCustomCheck")
 public class MyCustomCheck extends BugChecker implements MethodInvocationTreeMatcher {
 
     Matcher<ExpressionTree> PRINT_METHOD =
@@ -59,6 +61,8 @@ public class MyCustomCheck extends BugChecker implements MethodInvocationTreeMat
 
     Matcher<ExpressionTree> STRING_FORMAT =
             staticMethod().onClass(String.class.getName()).named("format");
+
+    // Matcher<ExpressionTree> ANNOTATION = hasAnnotation("Override");
 
     @Override
     public Description matchMethodInvocation(MethodInvocationTree tree, VisitorState state) {
